@@ -1026,28 +1026,32 @@ function renderTC(){
         +' <span style="font-size:11px;font-weight:400">'+chgTag(now,prv)+'</span>'
       +'</span></div>';
   }
-  function tcStatRow(lbl, now, prev, isRate){
-    if(now==null) return '';
-    var diff = prev!=null ? now-prev : null;
-    var neutral = diff!=null && Math.abs(diff)<(isRate?0.01:0.5);
-    var col = neutral?'#90a4b0':diff!=null&&diff<0?'#2e8b57':diff!=null&&diff>0?'#bf2b2b':'#aaa';
-    var chgHtml = diff===null?'<span style="color:#aaa">s/d</span>'
-      : neutral?'<span style="color:#90a4b0">sin cambio</span>'
-      : isRate?'<span style="color:'+col+';font-weight:700">'+(diff>0?'+':'')+fmtN(diff,2)+'pp</span>'
-      : '<span style="color:'+col+';font-weight:700">'+(diff>0?'+':'')+fmtN(diff/prev*100,2)+'%</span>';
-    var valStr = isRate ? fmtN(now,2)+'%' : '$'+fmtN(now,2);
-    return '<div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.06)">'
-      +'<span style="font-family:var(--mono);font-size:11px;color:var(--t2)">'+lbl+'</span>'
-      +'<span style="font-family:var(--mono);font-size:13px;font-weight:700;color:var(--t1)">'+valStr
-        +' <span style="font-size:11px;font-weight:400">'+chgHtml+'</span>'
-      +'</span></div>';
+  function tcSbox(lbl, valStr, chgStr){
+    return '<div class="sbox">'
+      +'<div class="slbl">'+lbl+'</div>'
+      +'<div class="sval" style="font-size:18px">'+valStr+'</div>'
+      +'<div class="ssub">vs ant: '+chgStr+'</div>'
+    +'</div>';
   }
-  var sh = tcStatRow('Mayorista',last.may,prev?prev.may:null,false)
-         + tcStatRow('MEP',last.mep,prev?prev.mep:null,false)
-         + tcStatRow('CCL',last.ccl,prev?prev.ccl:null,false)
-         + tcStatRow('Canje',last.canje,prev?prev.canje:null,true)
-         + tcStatRow('Brecha CCL',last.br,prev?prev.br:null,true);
-  document.getElementById('tc-stats').innerHTML='<div class="sbox" style="grid-column:1/-1">'+sh+'</div>';
+  function tcChg(now, prev, isRate){
+    if(now==null||prev==null) return '<span style="color:#aaa">s/d</span>';
+    var diff = now - prev;
+    var neutral = Math.abs(diff) < (isRate ? 0.01 : 0.5);
+    if(neutral) return '<span style="color:#90a4b0">sin cambio</span>';
+    var col = diff<0 ? '#1a7a4a' : '#bf2b2b';
+    var sign = diff>0 ? '+' : '';
+    var chg = isRate
+      ? sign+fmtN(diff,2)+'pp'
+      : sign+fmtN(diff/prev*100,2)+'%';
+    return '<span style="color:'+col+';font-weight:700">'+chg+'</span>';
+  }
+  var sh = '';
+  if(last.may) sh += tcSbox('MAYORISTA', '$'+fmtN(last.may,2), tcChg(last.may,prev?prev.may:null,false));
+  if(last.mep) sh += tcSbox('MEP',       '$'+fmtN(last.mep,2), tcChg(last.mep,prev?prev.mep:null,false));
+  if(last.ccl) sh += tcSbox('CCL',       '$'+fmtN(last.ccl,2), tcChg(last.ccl,prev?prev.ccl:null,false));
+  if(last.canje!=null) sh += tcSbox('CANJE', fmtN(last.canje,2)+'%', tcChg(last.canje,prev?prev.canje:null,true));
+  if(last.br!=null)    sh += tcSbox('BRECHA CCL', fmtN(last.br,2)+'%', tcChg(last.br,prev?prev.br:null,true));
+  document.getElementById('tc-stats').innerHTML = sh;
 }
 
 function drawBrechaMini(d){
