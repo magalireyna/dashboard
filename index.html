@@ -5,27 +5,27 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Dashboard Macro Argentina</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&family=Open+Sans+Mono:wght@400;700&display=swap');
 :root{
   --bg:#f2f6fb;--card:#fff;--border:#cdd8e8;
-  --b1:#0d3b6e;--b2:#1a5fa8;--b3:#2e8fe0;--b4:#5db3f5;--b5:#a8d4fa;--b6:#daeeff;
-  --gold:#c8960c;--gold2:#f0b429;
+  --b1:#003366;--b2:#3A506B;--b3:#5BABBE;--b4:#52DED7;--b5:#a8d8e0;--b6:#e0f4f6;
+  --gold:#8B734B;--gold2:#CCA43B;
   --green:#1a7a4a;--red:#bf2b2b;
-  --t1:#0d1b2a;--t2:#3a5068;--t3:#7a92a8;
-  --mono:'Space Mono',monospace;--body:'DM Sans',sans-serif;
+  --t1:#1D1D1B;--t2:#3a5068;--t3:#7a92a8;
+  --mono:'Open Sans',sans-serif;--body:'Open Sans',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--body);background:var(--bg);color:var(--t1);min-height:100vh}
 
 /* HEADER */
 header{
-  background:linear-gradient(135deg,#0a2d52 0%,#0d3b6e 60%,#1a5fa8 100%);
+  background:linear-gradient(135deg,#001f3f 0%,#003366 60%,#3A506B 100%);
   padding:0 32px;height:58px;display:flex;align-items:center;gap:16px;
-  border-bottom:2px solid var(--b3);
+  border-bottom:2px solid var(--brand5);
   box-shadow:0 2px 12px rgba(13,59,110,.25);
 }
 header h1{font-family:var(--mono);font-size:16px;font-weight:700;color:#fff;letter-spacing:.08em;white-space:nowrap}
-.badge{font-family:var(--mono);font-size:10px;background:rgba(46,143,224,.35);border:1px solid var(--b3);
+.badge{font-family:var(--mono);font-size:10px;background:rgba(91,171,190,.35);border:1px solid var(--b3);
   color:var(--b5);padding:3px 10px;border-radius:2px;letter-spacing:.07em}
 header .spacer{flex:1}
 
@@ -36,8 +36,8 @@ header .spacer{flex:1}
   background:none;border:none;border-bottom:3px solid transparent;
   padding:13px 18px;cursor:pointer;transition:all .2s;white-space:nowrap;margin-bottom:-2px;
 }
-.tab-btn:hover{color:var(--b2)}
-.tab-btn.active{color:var(--b1);border-bottom-color:var(--b2);font-weight:600}
+.tab-btn:hover{color:var(--brand4)}
+.tab-btn.active{color:var(--brand1);border-bottom-color:var(--brand1);font-weight:600}
 
 /* LAYOUT */
 .main{padding:24px 32px;max-width:1200px;margin:0 auto}
@@ -48,7 +48,7 @@ header .spacer{flex:1}
   box-shadow:0 1px 6px rgba(13,59,110,.07);
 }
 .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.card-title{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--b1);letter-spacing:.09em;text-transform:uppercase}
+.card-title{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--brand1);letter-spacing:.09em;text-transform:uppercase}
 
 /* CONTROLS */
 .ctrl-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
@@ -58,7 +58,7 @@ input[type=date]:focus{border-color:var(--b3);box-shadow:0 0 0 2px rgba(46,143,2
 .pbtns{display:flex;gap:5px;margin-left:4px;flex-wrap:wrap}
 .pbtn{font-family:var(--mono);font-size:10px;padding:5px 11px;border:1px solid var(--border);
   border-radius:4px;background:#f0f5fb;color:var(--t2);cursor:pointer;transition:all .15s;letter-spacing:.03em}
-.pbtn:hover,.pbtn.on{background:var(--b1);color:#fff;border-color:var(--b1)}
+.pbtn:hover,.pbtn.on{background:#003366 !important;color:#fff !important;border-color:#003366 !important;font-weight:600}
 
 /* LEGEND */
 .legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
@@ -78,7 +78,7 @@ canvas{display:block;width:100%!important}
   pointer-events:none;display:none;z-index:20;box-shadow:0 4px 16px rgba(13,59,110,.12);
   min-width:180px;
 }
-.tt-date{font-weight:700;margin-bottom:7px;color:var(--b1);font-size:10px;letter-spacing:.06em}
+.tt-date{font-weight:700;margin-bottom:7px;color:var(--brand1);font-size:10px;letter-spacing:.06em}
 .tt-row{display:flex;justify-content:space-between;gap:16px;margin-bottom:3px;align-items:center}
 .tt-lbl{color:var(--t2)}
 .tt-val{font-weight:700}
@@ -88,19 +88,19 @@ canvas{display:block;width:100%!important}
 .sbox{background:linear-gradient(145deg,#f0f7ff,#e5f0fb);border:1px solid var(--b5);
   border-radius:8px;padding:12px 15px}
 .slbl{font-size:9px;color:var(--t3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
-.sval{font-size:20px;font-weight:600;color:var(--b1);font-family:var(--mono);line-height:1}
+.sval{font-size:20px;font-weight:600;color:var(--brand1);font-family:var(--mono);line-height:1}
 .ssub{font-size:10px;color:var(--t2);margin-top:3px}
 .up{color:var(--green);font-weight:600}.dn{color:var(--red);font-weight:600}
 
 /* VAR TABLE */
 .vtbl{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px}
-.vtbl th{background:var(--b1);color:#fff;padding:9px 13px;text-align:left;font-size:10px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+.vtbl th{background:var(--brand1);color:#fff;padding:9px 13px;text-align:left;font-size:10px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
 .vtbl th:not(:first-child){text-align:right}
 .vtbl td{padding:8px 13px;border-bottom:1px solid var(--border);color:var(--t1)}
 .vtbl td:not(:first-child){text-align:right}
 .vtbl tr:last-child td{border-bottom:none}
 .vtbl tr:hover td{background:#f4f9ff}
-.bn{font-weight:700;color:var(--b1)}
+.bn{font-weight:700;color:var(--brand1)}
 
 /* CURVE TOGGLES */
 .ctgls{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
@@ -182,14 +182,14 @@ canvas{display:block;width:100%!important}
     <div id="bonos-avg-delta" style="font-family:var(--mono);font-size:11px;text-align:center;padding:3px 0 10px;color:var(--t2);min-height:20px"></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" id="bonos-grid">
       <div>
-        <div style="font-family:var(--mono);font-size:10px;font-weight:700;color:var(--b1);letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px">LEY NEW YORK (GD)</div>
+        <div style="font-family:var(--mono);font-size:10px;font-weight:700;color:var(--brand1);letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px">LEY NEW YORK (GD)</div>
         <div class="cw" id="bonos-cw-ny" style="height:300px">
           <canvas id="bonosNY"></canvas>
           <div class="tt" id="bonos-tt-ny"></div>
         </div>
       </div>
       <div>
-        <div style="font-family:var(--mono);font-size:10px;font-weight:700;color:var(--b2);letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px">LEY ARGENTINA (AL / BPO)</div>
+        <div style="font-family:var(--mono);font-size:10px;font-weight:700;color:var(--brand4);letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px">LEY ARGENTINA (AL / BPO)</div>
         <div class="cw" id="bonos-cw-arg" style="height:300px">
           <canvas id="bonosARG"></canvas>
           <div class="tt" id="bonos-tt-arg"></div>
@@ -224,9 +224,9 @@ canvas{display:block;width:100%!important}
       </div>
     </div>
     <div class="legend">
-      <div class="leg" id="leg-may" onclick="togTC('may',this)"><div class="lline" style="background:#0d3b6e"></div>Mayorista</div>
-      <div class="leg" id="leg-mep" onclick="togTC('mep',this)"><div class="lline" style="background:#2e8fe0"></div>MEP</div>
-      <div class="leg" id="leg-ccl" onclick="togTC('ccl',this)"><div class="lline" style="background:#f0b429"></div>CCL</div>
+      <div class="leg" id="leg-may" onclick="togTC('may',this)"><div class="lline" style="background:#003366"></div>Mayorista</div>
+      <div class="leg" id="leg-mep" onclick="togTC('mep',this)"><div class="lline" style="background:#5BABBE"></div>MEP</div>
+      <div class="leg" id="leg-ccl" onclick="togTC('ccl',this)"><div class="lline" style="background:#CCA43B"></div>CCL</div>
     </div>
     <div class="cw" id="tc-cw" style="height:280px">
       <canvas id="tcC"></canvas>
@@ -273,6 +273,10 @@ canvas{display:block;width:100%!important}
     <div class="cw" id="res-cw" style="height:310px">
       <canvas id="resC"></canvas>
       <div class="tt" id="res-tt"></div>
+      <div id="res-legend" style="position:absolute;top:10px;left:68px;background:rgba(255,255,255,0.95);border:1px solid #d0d8e4;border-radius:4px;padding:6px 10px;font-family:Open Sans,sans-serif;font-size:11px;pointer-events:none;line-height:1.8">
+        <span style="display:inline-block;width:12px;height:10px;background:#003366;margin-right:6px;vertical-align:middle"></span><span style="color:#003366;font-weight:600">Compras diarias</span><br>
+        <span style="display:inline-block;width:12px;height:3px;background:#CCA43B;margin-right:6px;vertical-align:middle;margin-bottom:2px"></span><span style="color:#8B734B;font-weight:600">Acumulado</span>
+      </div>
     </div>
     <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:10px">
       <div style="font-family:var(--mono);font-size:10px;color:var(--t3);margin-bottom:6px;letter-spacing:.05em">EVOLUCIÓN RRII</div>
@@ -299,9 +303,9 @@ canvas{display:block;width:100%!important}
     </div>
     <div class="legend">
       <div class="leg" id="leg-total" onclick="togMAE('total',this)"><div class="lline" style="background:#0a2d52;border-top:2px solid #0a2d52"></div>Total</div>
-      <div class="leg" id="leg-cable" onclick="togMAE('cable',this)"><div class="lline" style="background:#2e8fe0"></div>Cable</div>
-      <div class="leg" id="leg-maeM" onclick="togMAE('mep',this)"><div class="lline" style="background:#5db3f5"></div>MEP</div>
-      <div class="leg" id="leg-canje" onclick="togMAE('canje',this)"><div class="lline" style="background:#a8d4fa"></div>Canje</div>
+      <div class="leg" id="leg-cable" onclick="togMAE('cable',this)"><div class="lline" style="background:#5BABBE"></div>Cable</div>
+      <div class="leg" id="leg-maeM" onclick="togMAE('mep',this)"><div class="lline" style="background:#52DED7"></div>MEP</div>
+      <div class="leg" id="leg-canje" onclick="togMAE('canje',this)"><div class="lline" style="background:#a8d8e0"></div>Canje</div>
     </div>
     <div class="cw" id="mae-cw" style="height:360px">
       <canvas id="maeC"></canvas>
@@ -453,7 +457,7 @@ function drawChart(cfg){
   function toY(s,v){ return s.axis==='R'?toYR(v):toYL(v) }
 
   // Draw grid
-  ctx.font='10px Space Mono,monospace';
+  ctx.font='10px Open Sans,sans-serif';
   ctx.lineWidth=1;
   const steps=5;
   for(let i=0;i<=steps;i++){
@@ -467,7 +471,7 @@ function drawChart(cfg){
   if(Rdata.length){
     for(let i=0;i<=steps;i++){
       const v=yminR+(ymaxR-yminR)*i/steps, y=toYR(v);
-      ctx.fillStyle=cfg.opts.rightColor||'#5db3f5'; ctx.textAlign='left';
+      ctx.fillStyle=cfg.opts.rightColor||'#52DED7'; ctx.textAlign='left';
       const lbl=cfg.opts.rightFmt?cfg.opts.rightFmt(v):fmtN(v,1);
       ctx.fillText(lbl, pad.left+cW+7, y+3.5);
     }
@@ -476,19 +480,19 @@ function drawChart(cfg){
   // Axis labels
   if(cfg.opts.leftLabel){
     ctx.save(); ctx.translate(13, pad.top+cH/2); ctx.rotate(-Math.PI/2);
-    ctx.font='9px Space Mono,monospace'; ctx.fillStyle='#8aa0b4'; ctx.textAlign='center';
+    ctx.font='9px Open Sans,sans-serif'; ctx.fillStyle='#8aa0b4'; ctx.textAlign='center';
     ctx.fillText(cfg.opts.leftLabel, 0, 0); ctx.restore();
   }
   if(cfg.opts.rightLabel){
     ctx.save(); ctx.translate(W-10, pad.top+cH/2); ctx.rotate(Math.PI/2);
-    ctx.font='9px Space Mono,monospace'; ctx.fillStyle=cfg.opts.rightColor||'#5db3f5'; ctx.textAlign='center';
+    ctx.font='9px Open Sans,sans-serif'; ctx.fillStyle=cfg.opts.rightColor||'#52DED7'; ctx.textAlign='center';
     ctx.fillText(cfg.opts.rightLabel, 0, 0); ctx.restore();
   }
 
   // X ticks
   const totalDays=spanMs/86400000;
   const tickN=Math.min(10,Math.max(4,Math.floor(cW/75)));
-  ctx.textAlign='center'; ctx.fillStyle='#8aa0b4'; ctx.font='9px Space Mono,monospace';
+  ctx.textAlign='center'; ctx.fillStyle='#8aa0b4'; ctx.font='9px Open Sans,sans-serif';
   if(idxMode){
     // Pick evenly spaced dates from the index array
     for(let i=0;i<=tickN;i++){
@@ -599,7 +603,7 @@ function setupTooltip(canvasId, ttId, data, buildHTML){
 }
 
 // ===================== TAB 1: BONOS =====================
-const CURVE_COLS=['#0d3b6e','#2e8fe0','#5db3f5','#a8d4fa'];
+const CURVE_COLS=['#003366','#5BABBE','#52DED7','#a8d8e0'];
 const bonosDates=Object.keys(BONOS).sort();
 // Ley NY: GD + BPO series / Ley ARG: AL, AO, AN, AE series
 const GD_SERIES = ['GD29','GD30','GD35','GD38','GD41','GD46'];
@@ -734,7 +738,7 @@ function drawLawChart(canvasId, ttId, law){
   const toY=v=>pad.top+(1-(v-minY)/(maxY-minY))*cH;
 
   // Grid
-  ctx.font='10px Space Mono,monospace';
+  ctx.font='10px Open Sans,sans-serif';
   for(let i=0;i<=5;i++){
     const v=minY+(maxY-minY)*i/5, y=toY(v);
     ctx.strokeStyle='rgba(180,200,220,0.45)'; ctx.lineWidth=1;
@@ -750,16 +754,16 @@ function drawLawChart(canvasId, ttId, law){
     ctx.fillText(fmtN(v,1)+'y', x, pad.top+cH+14);
   }
   ctx.save(); ctx.translate(13,pad.top+cH/2); ctx.rotate(-Math.PI/2);
-  ctx.font='9px Space Mono,monospace'; ctx.fillStyle='#8aa0b4'; ctx.textAlign='center';
+  ctx.font='9px Open Sans,sans-serif'; ctx.fillStyle='#8aa0b4'; ctx.textAlign='center';
   ctx.fillText('YTM (%)',0,0); ctx.restore();
   ctx.save(); ctx.translate(W/2,H-4);
-  ctx.font='9px Space Mono,monospace'; ctx.fillStyle='#8aa0b4'; ctx.textAlign='center';
+  ctx.font='9px Open Sans,sans-serif'; ctx.fillStyle='#8aa0b4'; ctx.textAlign='center';
   ctx.fillText('Duration (años)',0,0); ctx.restore();
 
   canvas._bpts = [];
 
-  const todayColor = law==='NY' ? '#0d3b6e' : '#1a5fa8';
-  const cmpColor   = law==='NY' ? '#5db3f5' : '#a8d4fa';
+  const todayColor = law==='NY' ? '#003366' : '#3A506B';
+  const cmpColor   = '#5BABBE';
   const { date: cmpDate, visible: cmpVisible } = cmpState[law];
 
   const layers = [];
@@ -790,7 +794,7 @@ function drawLawChart(canvasId, ttId, law){
       // R² label
       ctx.setLineDash([]);
       const refDur=onC[onC.length-1]?.dur||maxD*0.9;
-      ctx.font='9px Space Mono,monospace'; ctx.fillStyle=layer.color; ctx.textAlign='left';
+      ctx.font='9px Open Sans,sans-serif'; ctx.fillStyle=layer.color; ctx.textAlign='left';
       ctx.fillText('R²='+fit.r2.toFixed(3), Math.min(toX(refDur)+6,pad.left+cW-40), toY(fit.a+fit.b*Math.log(refDur))-4);
       ctx.restore();
     }
@@ -815,7 +819,7 @@ function drawLawChart(canvasId, ttId, law){
 
   // Inline legend
   ctx.save();
-  ctx.font='9px Space Mono,monospace';
+  ctx.font='9px Open Sans,sans-serif';
   const legendItems=[{color:todayColor,dash:[],label:'Hoy'}];
   if(cmpDate&&cmpVisible&&BONOS[cmpDate])
     legendItems.push({color:cmpColor,dash:[6,4],label:getPeriodLabel(cmpDate)});
@@ -836,7 +840,7 @@ function drawLawChart(canvasId, ttId, law){
   // Labels with collision avoidance
   ctx.save();
   const labelSize=W<500?8:9;
-  ctx.font='bold '+labelSize+'px Space Mono,monospace';
+  ctx.font='bold '+labelSize+'px Open Sans,sans-serif';
   // Draw labels ONLY for today's points, with collision avoidance
   const placed=[];
   // Sort today points by x position so labels get placed left-to-right
@@ -922,11 +926,11 @@ function buildVarTable(){
   var periodLbl = cmpDate ? getPeriodLabel(cmpDate) : '–';
 
   // Simple 4-column table: Bono | YTM Hoy | YTM anterior | ∆ bps/∆%
-  var headHtml = '<th>Bono</th>'
-    + '<th style="text-align:right">YTM Hoy</th>';
+  var headHtml = '<th style="background:#003366;color:#fff">Bono</th>'
+    + '<th style="text-align:right;background:#003366;color:#fff">YTM Hoy</th>';
   if(cmpDate && BONOS[cmpDate]){
-    headHtml += '<th style="text-align:right;background:rgba(13,59,110,.06)">YTM — '+periodLbl+'</th>'
-              + '<th style="text-align:right;background:rgba(13,59,110,.06)">Variación vs hoy</th>';
+    headHtml += '<th style="text-align:right;background:#003366;color:#fff">YTM — '+periodLbl+'</th>'
+              + '<th style="text-align:right;background:#003366;color:#fff">Variación vs hoy</th>';
   }
   document.getElementById('vhead').innerHTML = headHtml;
 
@@ -935,7 +939,7 @@ function buildVarTable(){
 
   allBonos.forEach(function(n){
     var row = '<td class="bn">'+n.bono+'</td>'
-      + '<td style="text-align:right;font-family:var(--mono);font-weight:700;color:var(--b1)">'+fmtN(n.ytm,2)+'%</td>';
+      + '<td style="text-align:right;font-family:var(--mono);font-weight:700;color:var(--brand1)">'+fmtN(n.ytm,2)+'%</td>';
 
     if(cmpDate && BONOS[cmpDate]){
       var o = (BONOS[cmpDate]||[]).filter(function(b){return b.bono===n.bono;})[0];
@@ -987,16 +991,16 @@ function renderTC(){
 
   // ── Main chart: Mayorista, MEP, CCL ──────────────────────────────
   var series = [];
-  if(!tcHide.may) series.push({label:'Mayorista',data:d.map(function(r){return {x:r.f,y:r.may};}).filter(function(p){return p.y;}),color:'#0d3b6e',width:1.8,axis:'L',type:'line'});
-  if(!tcHide.mep) series.push({label:'MEP',      data:d.filter(function(r){return r.mep;}).map(function(r){return {x:r.f,y:r.mep};}),color:'#2e8fe0',width:1.5,axis:'L',type:'line'});
-  if(!tcHide.ccl) series.push({label:'CCL',      data:d.filter(function(r){return r.ccl;}).map(function(r){return {x:r.f,y:r.ccl};}),color:'#f0b429',width:1.5,axis:'L',type:'line'});
+  if(!tcHide.may) series.push({label:'Mayorista',data:d.map(function(r){return {x:r.f,y:r.may};}).filter(function(p){return p.y;}),color:'#003366',width:1.8,axis:'L',type:'line'});
+  if(!tcHide.mep) series.push({label:'MEP',      data:d.filter(function(r){return r.mep;}).map(function(r){return {x:r.f,y:r.mep};}),color:'#5BABBE',width:1.5,axis:'L',type:'line'});
+  if(!tcHide.ccl) series.push({label:'CCL',      data:d.filter(function(r){return r.ccl;}).map(function(r){return {x:r.f,y:r.ccl};}),color:'#CCA43B',width:1.5,axis:'L',type:'line'});
   if(series.length){
     drawChart({canvasId:'tcC',wrapH:280,series:series,opts:{leftFmt:function(v){return '$'+fmtN(v,0);},leftLabel:'Tipo de cambio (ARS)'}});
     setupTooltip('tcC','tc-tt',d,function(p){
       var h='<div class="tt-date">'+fmtD(p.f)+'</div>';
-      if(!tcHide.may&&p.may) h+='<div class="tt-row"><span class="tt-lbl" style="color:#0d3b6e">■ Mayorista</span><span class="tt-val">$'+fmtN(p.may)+'</span></div>';
-      if(!tcHide.mep&&p.mep) h+='<div class="tt-row"><span class="tt-lbl" style="color:#2e8fe0">■ MEP</span><span class="tt-val">$'+fmtN(p.mep)+'</span></div>';
-      if(!tcHide.ccl&&p.ccl) h+='<div class="tt-row"><span class="tt-lbl" style="color:#f0b429">■ CCL</span><span class="tt-val">$'+fmtN(p.ccl)+'</span></div>';
+      if(!tcHide.may&&p.may) h+='<div class="tt-row"><span class="tt-lbl" style="color:#003366">■ Mayorista</span><span class="tt-val">$'+fmtN(p.may)+'</span></div>';
+      if(!tcHide.mep&&p.mep) h+='<div class="tt-row"><span class="tt-lbl" style="color:#5BABBE">■ MEP</span><span class="tt-val">$'+fmtN(p.mep)+'</span></div>';
+      if(!tcHide.ccl&&p.ccl) h+='<div class="tt-row"><span class="tt-lbl" style="color:#CCA43B">■ CCL</span><span class="tt-val">$'+fmtN(p.ccl)+'</span></div>';
       return h;
     });
   }
@@ -1047,18 +1051,18 @@ function renderTC(){
 }
 
 function drawBrechaMini(d){
-  drawMiniLine(d, 'brechaC', 'brecha-tt', '#5db3f5',
+  drawMiniLine(d, 'brechaC', 'brecha-tt', '#52DED7',
     function(p){ return p.br; },
     function(v){ return fmtN(v,2)+'%'; },
     function(p){ return '<div class="tt-date">'+fmtD(p.f)+'</div>'
-      +'<div class="tt-row"><span class="tt-lbl" style="color:#5db3f5">Brecha CCL</span>'
+      +'<div class="tt-row"><span class="tt-lbl" style="color:#52DED7">Brecha CCL</span>'
       +'<span class="tt-val">'+fmtN(p.br,2)+'%</span></div>'; }
   );
-  drawMiniLine(d, 'canjeC', 'canje-tt', '#a8d4fa',
+  drawMiniLine(d, 'canjeC', 'canje-tt', '#a8d8e0',
     function(p){ return p.canje; },
     function(v){ return fmtN(v,2)+'%'; },
     function(p){ return '<div class="tt-date">'+fmtD(p.f)+'</div>'
-      +'<div class="tt-row"><span class="tt-lbl" style="color:#a8d4fa">Canje</span>'
+      +'<div class="tt-row"><span class="tt-lbl" style="color:#a8d8e0">Canje</span>'
       +'<span class="tt-val">'+fmtN(p.canje,2)+'%</span></div>'; }
   );
 }
@@ -1089,7 +1093,7 @@ function drawMiniLine(d, canvasId, ttId, color, valFn, fmtFn, ttFn){
   function toY(v){ return pad.top+(1-(v-minV)/(maxV-minV))*cH; }
 
   // Grid
-  ctx.font='8px Space Mono,monospace';
+  ctx.font='8px Open Sans,sans-serif';
   [0,1,2].forEach(function(i){
     var v=minV+(maxV-minV)*i/2, y=toY(v);
     ctx.strokeStyle='rgba(180,200,220,0.35)'; ctx.lineWidth=1;
@@ -1099,7 +1103,7 @@ function drawMiniLine(d, canvasId, ttId, color, valFn, fmtFn, ttFn){
   });
   // X ticks
   var tickN=Math.min(6,Math.max(3,Math.floor(cW/60)));
-  ctx.textAlign='center'; ctx.fillStyle='#8aa0b4'; ctx.font='8px Space Mono,monospace';
+  ctx.textAlign='center'; ctx.fillStyle='#8aa0b4'; ctx.font='8px Open Sans,sans-serif';
   for(var ti=0;ti<=tickN;ti++){
     var idx=Math.round(ti/tickN*(N-1));
     var f=pts[idx].f;
@@ -1236,7 +1240,7 @@ function drawResMain(d){
   function toYR(v){ return pad.top+(1-(v-minK)/(maxK-minK))*cH; }
 
   // Grid
-  ctx.font='9px Space Mono,monospace';
+  ctx.font='9px Open Sans,sans-serif';
   for(var i=0;i<=5;i++){
     var v=minC+(maxC-minC)*i/5, y=toYL(v);
     ctx.strokeStyle='rgba(180,200,220,0.45)'; ctx.lineWidth=1;
@@ -1247,20 +1251,20 @@ function drawResMain(d){
   // Right axis (cumulative)
   for(var i=0;i<=4;i++){
     var v=minK+(maxK-minK)*i/4, y=toYR(v);
-    ctx.fillStyle='#c8960c'; ctx.textAlign='left';
+    ctx.fillStyle='#8B734B'; ctx.textAlign='left';
     ctx.fillText((v>0?'+':'')+fmtN(v,0), pad.left+cW+6, y+3.5);
   }
   // Axis labels
   ctx.save(); ctx.translate(13,pad.top+cH/2); ctx.rotate(-Math.PI/2);
-  ctx.font='8px Space Mono,monospace'; ctx.fillStyle='#8aa0b4'; ctx.textAlign='center';
+  ctx.font='8px Open Sans,sans-serif'; ctx.fillStyle='#8aa0b4'; ctx.textAlign='center';
   ctx.fillText('Compras (USD M)',0,0); ctx.restore();
   ctx.save(); ctx.translate(W-8,pad.top+cH/2); ctx.rotate(Math.PI/2);
-  ctx.font='8px Space Mono,monospace'; ctx.fillStyle='#c8960c'; ctx.textAlign='center';
+  ctx.font='8px Open Sans,sans-serif'; ctx.fillStyle='#8B734B'; ctx.textAlign='center';
   ctx.fillText('Acumulado (USD M)',0,0); ctx.restore();
 
   // X ticks (dates)
   var tickN=Math.min(10,Math.max(4,Math.floor(cW/70)));
-  ctx.textAlign='center'; ctx.fillStyle='#8aa0b4'; ctx.font='9px Space Mono,monospace';
+  ctx.textAlign='center'; ctx.fillStyle='#8aa0b4'; ctx.font='9px Open Sans,sans-serif';
   for(var ti=0;ti<=tickN;ti++){
     var idx=Math.round(ti/tickN*(N-1));
     var x=toX(idx);
@@ -1287,7 +1291,7 @@ function drawResMain(d){
     if(p.compras==null||p.compras===0) return;
     var x=toX(i), y0=toYL(0), y1=toYL(p.compras);
     var top_y=Math.min(y0,y1), bH=Math.max(1,Math.abs(y1-y0));
-    ctx.fillStyle = p.compras>=0 ? '#2268b3' : '#bf4040';
+    ctx.fillStyle = p.compras>=0 ? '#003366' : '#bf4040';
     ctx.beginPath();
     ctx.moveTo(x-barW/2+rr, top_y);
     ctx.lineTo(x+barW/2-rr, top_y);
@@ -1299,7 +1303,7 @@ function drawResMain(d){
   });
 
   // Cumulative line
-  ctx.strokeStyle='#f0b429'; ctx.lineWidth=2; ctx.setLineDash([]);
+  ctx.strokeStyle='#CCA43B'; ctx.lineWidth=2; ctx.setLineDash([]);
   ctx.beginPath();
   var first=true;
   d.forEach(function(p,i){
@@ -1316,16 +1320,7 @@ function drawResMain(d){
 
   ctx.restore();
 
-  // Legend
-  ctx.save();
-  ctx.font='9px Space Mono,monospace';
-  var lx=pad.left+10, ly=pad.top+12;
-  ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.fillRect(lx-2,ly-10,160,30);
-  ctx.fillStyle='#2268b3'; ctx.fillRect(lx,ly-7,12,8); ctx.fillText('Compras diarias',lx+16,ly);
-  ctx.strokeStyle='#f0b429'; ctx.lineWidth=2;
-  ctx.beginPath(); ctx.moveTo(lx,ly+10); ctx.lineTo(lx+12,ly+10); ctx.stroke();
-  ctx.fillStyle='#c8960c'; ctx.fillText('Acumulado',lx+16,ly+13);
-  ctx.restore();
+
 
   // Tooltip
   var tt=document.getElementById('res-tt');
@@ -1337,11 +1332,11 @@ function drawResMain(d){
     var idx=Math.round((mx-pad.left)/cW*(N-1));
     idx=Math.max(0,Math.min(N-1,idx));
     var p=d[idx];
-    var cumCol=p.cum>=0?'#c8960c':'#bf2b2b';
+    var cumCol=p.cum>=0?'#8B734B':'#bf2b2b';
     var h='<div class="tt-date">'+fmtD(p.f)+'</div>'
       +'<div class="tt-row"><span class="tt-lbl" style="color:#2268b3">■ Compras</span>'
-        +'<span class="tt-val" style="color:'+(p.compras>=0?'#2268b3':'#bf4040')+'">'+(p.compras>0?'+':'')+fmtN(p.compras,0)+' M</span></div>'
-      +'<div class="tt-row"><span class="tt-lbl" style="color:#c8960c">■ Acumulado</span>'
+        +'<span class="tt-val" style="color:'+(p.compras>=0?'#003366':'#bf4040')+'">'+(p.compras>0?'+':'')+fmtN(p.compras,0)+' M</span></div>'
+      +'<div class="tt-row"><span class="tt-lbl" style="color:#8B734B">■ Acumulado</span>'
         +'<span class="tt-val" style="color:'+cumCol+'">'+(p.cum>0?'+':'')+fmtN(p.cum,0)+' M</span></div>';
     tt.innerHTML=h; tt.style.display='block';
     var tlx=toX(idx)+14; if(tlx+190>W) tlx=toX(idx)-200;
@@ -1371,7 +1366,7 @@ function drawRRIIMini(d){
   function toY(v){ return pad.top+(1-(v-minV)/(maxV-minV))*cH; }
 
   // Grid lines (minimal)
-  ctx.font='9px Space Mono,monospace';
+  ctx.font='9px Open Sans,sans-serif';
   [0,1,2].forEach(function(i){
     var v=minV+(maxV-minV)*i/2, y=toY(v);
     ctx.strokeStyle='rgba(180,200,220,0.4)'; ctx.lineWidth=1;
@@ -1382,7 +1377,7 @@ function drawRRIIMini(d){
 
   // X ticks
   var tickN=Math.min(8,Math.max(3,Math.floor(cW/70)));
-  ctx.textAlign='center'; ctx.fillStyle='#8aa0b4'; ctx.font='9px Space Mono,monospace';
+  ctx.textAlign='center'; ctx.fillStyle='#8aa0b4'; ctx.font='9px Open Sans,sans-serif';
   for(var ti=0;ti<=tickN;ti++){
     var idx=Math.round(ti/tickN*(N-1));
     var x=toX(idx);
@@ -1399,7 +1394,7 @@ function drawRRIIMini(d){
   ctx.fillStyle='rgba(46,143,224,0.10)'; ctx.fill();
 
   // Line
-  ctx.strokeStyle='#2e8fe0'; ctx.lineWidth=1.6;
+  ctx.strokeStyle='#5BABBE'; ctx.lineWidth=1.6;
   ctx.beginPath();
   pts.forEach(function(p,i){ var x=toX(i),y=toY(p.rrii); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
   ctx.stroke();
@@ -1407,7 +1402,7 @@ function drawRRIIMini(d){
   ctx.restore();
 
   // RRII label
-  ctx.font='8px Space Mono,monospace'; ctx.fillStyle='#2e8fe0'; ctx.textAlign='left';
+  ctx.font='8px Open Sans,sans-serif'; ctx.fillStyle='#5BABBE'; ctx.textAlign='left';
   ctx.fillText('RRII (USD M)', pad.left+4, pad.top+10);
 }
 
@@ -1441,25 +1436,25 @@ function renderMAE(){
   if(!maeHide.total) series.push({
     label:'Total',
     data:d.filter(r=>r.vol!=null&&r.vol>0).map(r=>({x:r.f,y:r.vol})),
-    color:'#0a2d52',width:2.2,axis:'L',type:'line',
+    color:'#003366',width:2.2,axis:'L',type:'line',
     fill:'rgba(10,45,82,0.07)',fillBase:0
   });
   if(!maeHide.cable) series.push({
     label:'Cable',
     data:d.filter(r=>r.cable!=null&&r.cable>0).map(r=>({x:r.f,y:r.cable})),
-    color:'#2e8fe0',width:1.6,axis:'L',type:'line',
+    color:'#5BABBE',width:1.6,axis:'L',type:'line',
     fill:'rgba(46,143,224,0.13)',fillBase:0
   });
   if(!maeHide.mep) series.push({
     label:'MEP',
     data:d.filter(r=>r.mep!=null&&r.mep>0).map(r=>({x:r.f,y:r.mep})),
-    color:'#5db3f5',width:1.4,axis:'L',type:'line',
+    color:'#52DED7',width:1.4,axis:'L',type:'line',
     fill:'rgba(93,179,245,0.12)',fillBase:0
   });
   if(!maeHide.canje) series.push({
     label:'Canje',
     data:d.filter(r=>r.canje!=null&&r.canje>0).map(r=>({x:r.f,y:r.canje})),
-    color:'#a8d4fa',width:1.2,axis:'L',type:'line',
+    color:'#a8d8e0',width:1.2,axis:'L',type:'line',
     fill:'rgba(168,212,250,0.15)',fillBase:0
   });
   if(!series.length) return;
@@ -1474,9 +1469,9 @@ function renderMAE(){
   setupTooltip('maeC','mae-tt',d,p=>{
     let h='<div class="tt-date">'+fmtD(p.f)+'</div>';
     if(!maeHide.total&&p.vol) h+='<div class="tt-row"><span class="tt-lbl" style="color:#0a2d52">■ Total</span><span class="tt-val" style="font-weight:700">'+fmtN(p.vol,1)+' M</span></div>';
-    if(!maeHide.cable&&p.cable) h+='<div class="tt-row"><span class="tt-lbl" style="color:#2e8fe0">■ Cable</span><span class="tt-val">'+fmtN(p.cable,1)+' M</span></div>';
-    if(!maeHide.mep&&p.mep)    h+='<div class="tt-row"><span class="tt-lbl" style="color:#5db3f5">■ MEP</span><span class="tt-val">'+fmtN(p.mep,1)+' M</span></div>';
-    if(!maeHide.canje&&p.canje) h+='<div class="tt-row"><span class="tt-lbl" style="color:#a8d4fa">■ Canje</span><span class="tt-val">'+fmtN(p.canje,1)+' M</span></div>';
+    if(!maeHide.cable&&p.cable) h+='<div class="tt-row"><span class="tt-lbl" style="color:#5BABBE">■ Cable</span><span class="tt-val">'+fmtN(p.cable,1)+' M</span></div>';
+    if(!maeHide.mep&&p.mep)    h+='<div class="tt-row"><span class="tt-lbl" style="color:#52DED7">■ MEP</span><span class="tt-val">'+fmtN(p.mep,1)+' M</span></div>';
+    if(!maeHide.canje&&p.canje) h+='<div class="tt-row"><span class="tt-lbl" style="color:#a8d8e0">■ Canje</span><span class="tt-val">'+fmtN(p.canje,1)+' M</span></div>';
     return h;
   });
 }
@@ -1564,7 +1559,7 @@ function buildSemaforo(){
     var detailHtml = detail
       ? '<div style="font-size:11px;color:'+c.text+';opacity:.85;font-family:var(--mono);border-top:1px solid '+c.border+'44;padding-top:8px;margin-top:6px;line-height:1.7">'+detail+'</div>'
       : '';
-    return '<div style="background:'+c.bg+';border:1.5px solid '+c.border+';border-left:5px solid '+c.border+';border-radius:10px;padding:18px 20px">'
+    return '<div style="background:'+c.bg+';border:1.5px solid '+c.border+';border-left:4px solid '+c.border+';border-radius:10px;padding:18px 20px">'
       + '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">'
         + '<div>'
           + '<div style="font-family:var(--mono);font-size:15px;font-weight:700;color:var(--t1);letter-spacing:.02em">'+title+'</div>'
@@ -1848,7 +1843,7 @@ function drawLetraChart(canvasId, ttId, key, todayData, histData){
   var toY=function(v){ return pad.top+(1-(v-minY)/(maxY-minY))*cH; };
 
   // Grid
-  ctx.font='10px Space Mono,monospace';
+  ctx.font='10px Open Sans,sans-serif';
   for(var i=0;i<=5;i++){
     var v=minY+(maxY-minY)*i/5, y=toY(v);
     ctx.strokeStyle='rgba(180,200,220,0.4)'; ctx.lineWidth=1;
@@ -1866,10 +1861,10 @@ function drawLetraChart(canvasId, ttId, key, todayData, histData){
   });
   // Axis labels
   ctx.save(); ctx.translate(14,pad.top+cH/2); ctx.rotate(-Math.PI/2);
-  ctx.font='9px Space Mono,monospace'; ctx.fillStyle='#8aa0b4'; ctx.textAlign='center';
+  ctx.font='9px Open Sans,sans-serif'; ctx.fillStyle='#8aa0b4'; ctx.textAlign='center';
   ctx.fillText('TEM (%)',0,0); ctx.restore();
   ctx.save(); ctx.translate(pad.left+cW/2,H-4);
-  ctx.font='9px Space Mono,monospace'; ctx.fillStyle='#8aa0b4'; ctx.textAlign='center';
+  ctx.font='9px Open Sans,sans-serif'; ctx.fillStyle='#8aa0b4'; ctx.textAlign='center';
   ctx.fillText('Days to Maturity',0,0); ctx.restore();
 
   canvas._pts=[];
@@ -1921,7 +1916,7 @@ function drawLetraChart(canvasId, ttId, key, todayData, histData){
     // Labels on today points only
     if(!isCmp){
       ctx.save();
-      ctx.font='bold 9px Space Mono,monospace';
+      ctx.font='bold 9px Open Sans,sans-serif';
       var placed=[];
       sorted.forEach(function(p){
         var x=toX(p.d),y=toY(p.y);
@@ -1957,14 +1952,14 @@ function drawLetraChart(canvasId, ttId, key, todayData, histData){
   var OFF_DAYS = key==='lecap' ? 30 : 0;  // LECAP: exclude d<30 from fit
 
   // Draw comparison first (behind), then today
-  var todayColor = key==='lecap' ? '#1a6e9e' : '#0d3b6e';
-  var cmpColor   = key==='lecap' ? '#7ec8e3' : '#5db3f5';
+  var todayColor = key==='lecap' ? '#1a6e9e' : '#003366';
+  var cmpColor   = key==='lecap' ? '#7ec8e3' : '#52DED7';
   drawSeries(cmpData, cmpColor, true, OFF_DAYS);
   drawSeries(todayData, todayColor, false, OFF_DAYS);
 
   // Inline legend
   ctx.save();
-  ctx.font='9px Space Mono,monospace';
+  ctx.font='9px Open Sans,sans-serif';
   var items=[{color:todayColor,dash:[],label:'Hoy'}];
   if(cmpDate&&letrasCmpVis[key]&&histData[cmpDate])
     items.push({color:cmpColor,dash:[5,4],label:getPeriodLabel(cmpDate)});
@@ -2060,7 +2055,7 @@ function initRofex(){
   main.forEach(function(c){
     var month = new Date(c.vto+'T00:00:00').toLocaleString('es-AR',{month:'short',year:'2-digit'}).toUpperCase();
     tbl += '<tr>'
-      + '<td style="font-weight:700;color:var(--b1);font-family:var(--mono)">'+month+'</td>'
+      + '<td style="font-weight:700;color:var(--brand1);font-family:var(--mono)">'+month+'</td>'
       + '<td style="text-align:right;font-family:var(--mono);font-weight:600">$'+fmtN(c.price,1)+'</td>'
       + '<td style="text-align:right;font-family:var(--mono);color:var(--t2)">'+fmtN(c.tna,2)+'%</td>'
       + '<td style="text-align:right;background:'+chgBg(c.chg1d)+';font-family:var(--mono)">'+fmtChgFull(c.chg1d,c.price)+'</td>'
