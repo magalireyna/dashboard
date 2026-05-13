@@ -323,10 +323,6 @@ canvas{display:block;width:100%!important}
       <div class="card-header">
         <span class="card-title">LECAP — Treasury Ar$ Capitalizable Bills</span>
       </div>
-      <div class="ctrl-row" style="margin-bottom:10px;gap:7px;flex-wrap:wrap;align-items:center">
-        <span style="font-family:var(--mono);font-size:10px;color:var(--t2)">COMPARAR</span>
-        <div class="pbtns" id="lecap-period-btns"></div>
-      </div>
       <div class="cw" id="lecap-cw" style="height:310px">
         <canvas id="lecapC"></canvas>
         <div class="tt" id="lecap-tt"></div>
@@ -336,13 +332,31 @@ canvas{display:block;width:100%!important}
       <div class="card-header">
         <span class="card-title">TAMAR — Floating Rate Notes</span>
       </div>
-      <div class="ctrl-row" style="margin-bottom:10px;gap:7px;flex-wrap:wrap;align-items:center">
-        <span style="font-family:var(--mono);font-size:10px;color:var(--t2)">COMPARAR</span>
-        <div class="pbtns" id="tamar-period-btns"></div>
-      </div>
       <div class="cw" id="tamar-cw" style="height:310px">
         <canvas id="tamarC"></canvas>
         <div class="tt" id="tamar-tt"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DL + CER row -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px" id="letras-dlcer-grid">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">DL — Dollar Linked</span>
+      </div>
+      <div class="cw" id="dl-cw" style="height:310px">
+        <canvas id="dlC"></canvas>
+        <div class="tt" id="dl-tt"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">CER — Inflation Linked</span>
+      </div>
+      <div class="cw" id="cer-cw" style="height:310px">
+        <canvas id="cerC"></canvas>
+        <div class="tt" id="cer-tt"></div>
       </div>
     </div>
   </div>
@@ -632,8 +646,8 @@ const CURVE_COLS=['#003366','#5BABBE','#52DED7','#a8d8e0'];
 const bonosDates=Object.keys(BONOS).sort();
 // Ley NY: GD + BPO series / Ley ARG: AL, AO, AN, AE series
 const RV   = {"lider": [{"s": "YPFD", "p": 64650.0, "v": -2.74}, {"s": "GGAL", "p": 6220.0, "v": -0.24}, {"s": "TRAN", "p": 3747.5, "v": -2.97}, {"s": "PAMP", "p": 4745.0, "v": -2.66}, {"s": "BMA", "p": 10600.0, "v": -2.21}, {"s": "SUPV", "p": 2255.0, "v": -2.88}, {"s": "BBAR", "p": 7160.0, "v": -2.78}, {"s": "VALO", "p": 682.5, "v": 2.01}, {"s": "EDN", "p": 1720.0, "v": -3.85}, {"s": "CEPU", "p": 2110.0, "v": -0.93}], "cedears": [{"s": "MELI", "p": 19280.0, "v": -0.1}, {"s": "MU", "p": 238275.0, "v": 5.99}, {"s": "INTC", "p": 35660.0, "v": 0.45}, {"s": "NU", "p": 9500.0, "v": -3.3}, {"s": "NVDA", "p": 13940.0, "v": 2.87}, {"s": "VIST", "p": 33840.0, "v": -0.7}, {"s": "JD", "p": 12490.0, "v": 7.95}, {"s": "EWZ", "p": 27260.0, "v": -3.4}, {"s": "HUT", "p": 804275.0, "v": 1.65}, {"s": "TSLA", "p": 44020.0, "v": 3.14}], "general": [{"s": "PAMPB", "p": 4770.0, "v": 0.1}, {"s": "TECO2", "p": 3517.5, "v": 2.25}, {"s": "A3", "p": 3220.0, "v": 0.0}, {"s": "IRSA", "p": 2010.0, "v": -0.98}, {"s": "BHIP", "p": 310.0, "v": -3.87}, {"s": "AGRO", "p": 40.1, "v": -0.99}, {"s": "CTIO", "p": 1720.0, "v": -0.28}, {"s": "MIRG", "p": 18075.0, "v": -2.16}, {"s": "CVH", "p": 7400.0, "v": 0.4}, {"s": "HARG", "p": 1515.0, "v": -4.11}], "etf": [{"s": "SPY", "p": 55075.0, "v": 1.24}, {"s": "QQQ", "p": 53025.0, "v": 1.77}, {"s": "EWZ", "p": 27260.0, "v": -3.4}, {"s": "DIA", "p": 36900.0, "v": 0.7}, {"s": "IWM", "p": 41960.0, "v": 0.76}, {"s": "IVV", "p": 1605.0, "v": 1.38}, {"s": "EEM", "p": 19980.0, "v": 2.72}]};
-const DL_TODAY  = [{"t": "BPOB7", "d": 352, "price": 145440.0, "ytm": 3.2957, "vp1d": null}, {"t": "TZV26", "d": 48, "price": 138210.0, "ytm": 4.0637, "vp1d": 0.4798}, {"t": "D30S6", "d": 140, "price": 139200.0, "ytm": -0.526, "vp1d": 0.0}, {"t": "BPOC7", "d": 352, "price": 143720.0, "ytm": 5.3791, "vp1d": null}, {"t": "TZV27", "d": 413, "price": 135190.0, "ytm": 2.441, "vp1d": 1.0969}, {"t": "BPOA8", "d": 718, "price": 128200.0, "ytm": 7.484, "vp1d": null}, {"t": "TZV28", "d": 779, "price": 119830.0, "ytm": 7.1816, "vp1d": 1.003}];
-const CER_TODAY = [{"t": "X15Y6", "d": 2, "price": 107.98, "ytm": -14.961, "vp1d": 0.0482}, {"t": "X29Y6", "d": 16, "price": 117.07, "ytm": -17.2183, "vp1d": 0.0598}, {"t": "TZX26", "d": 48, "price": 383.65, "ytm": -11.0593, "vp1d": 0.1566}, {"t": "X31L6", "d": 79, "price": 112.45, "ytm": -8.0077, "vp1d": null}, {"t": "TX26", "d": 180, "price": 684.2, "ytm": -1.6806, "vp1d": null}, {"t": "X30S6", "d": 140, "price": 107.45, "ytm": -3.7088, "vp1d": null}, {"t": "TZXO6", "d": 170, "price": 159.2, "ytm": -2.0035, "vp1d": null}, {"t": "X30N6", "d": 201, "price": 115.5, "ytm": -1.1123, "vp1d": null}, {"t": "TZXD6", "d": 216, "price": 280.3, "ytm": -0.552, "vp1d": null}, {"t": "TZXM7", "d": 322, "price": 209.15, "ytm": 0.2374, "vp1d": null}, {"t": "TZXA7", "d": 352, "price": 116.45, "ytm": -0.255, "vp1d": null}, {"t": "TZXY7", "d": 382, "price": 113.95, "ytm": 0.7097, "vp1d": null}, {"t": "TZX27", "d": 413, "price": 372.85, "ytm": 1.1999, "vp1d": null}, {"t": "TX28", "d": 911, "price": 1640.0, "ytm": 3.9572, "vp1d": null}, {"t": "TZXS7", "d": 505, "price": 98.3, "ytm": 4.6969, "vp1d": null}, {"t": "TZXD7", "d": 581, "price": 254.8, "ytm": 5.9686, "vp1d": null}, {"t": "TZXM8", "d": 688, "price": 93.0, "ytm": 6.3478, "vp1d": null}, {"t": "TZX28", "d": 779, "price": 321.65, "ytm": 7.8548, "vp1d": 0.5156}, {"t": "TZXS8", "d": 870, "price": 86.8, "ytm": 8.2073, "vp1d": 0.3468}, {"t": "TZXM9", "d": 1050, "price": 82.8, "ytm": 8.4076, "vp1d": null}, {"t": "TXMJ9", "d": 1143, "price": 84.65, "ytm": 5.9602, "vp1d": null}, {"t": "DICP", "d": 2789, "price": 50550.0, "ytm": 8.0646, "vp1d": null}, {"t": "PARP", "d": 4615, "price": 33315.0, "ytm": 8.7047, "vp1d": null}, {"t": "CUAP", "d": 5710, "price": 41780.0, "ytm": 8.4998, "vp1d": null}];
+const DL_TODAY  = [{"t":"BPOB7","d":352,"price":145.44,"ytm":3.3},{"t":"TZV26","d":48,"price":138.21,"ytm":4.06},{"t":"D30S6","d":140,"price":139.2,"ytm":-0.53},{"t":"BPOC7","d":352,"price":143.72,"ytm":5.38},{"t":"TZV27","d":413,"price":135.19,"ytm":2.44},{"t":"BPOA8","d":718,"price":128.2,"ytm":7.48},{"t":"TZV28","d":779,"price":119.83,"ytm":7.18}];
+const CER_TODAY = [{"t":"X15Y6","d":2,"price":108.0,"ytm":-14.96},{"t":"X29Y6","d":16,"price":117.1,"ytm":-17.22},{"t":"TZX26","d":48,"price":383.7,"ytm":-11.06},{"t":"X31L6","d":79,"price":112.5,"ytm":-8.01},{"t":"TX26","d":121,"price":684.2,"ytm":-1.68},{"t":"X30S6","d":140,"price":107.5,"ytm":-3.71},{"t":"TZXO6","d":170,"price":159.2,"ytm":-2.0},{"t":"X30N6","d":201,"price":115.5,"ytm":-1.11},{"t":"TZXD6","d":216,"price":280.3,"ytm":-0.55},{"t":"TZXM7","d":322,"price":209.2,"ytm":0.24},{"t":"TZXA7","d":352,"price":116.4,"ytm":-0.26},{"t":"TZXY7","d":382,"price":114.0,"ytm":0.71},{"t":"TZX27","d":413,"price":372.9,"ytm":1.2},{"t":"TX28","d":852,"price":1640.0,"ytm":3.96},{"t":"TZXS7","d":505,"price":98.3,"ytm":4.7},{"t":"TZXD7","d":581,"price":254.8,"ytm":5.97},{"t":"TZXM8","d":688,"price":93.0,"ytm":6.35},{"t":"TZX28","d":779,"price":321.7,"ytm":7.85},{"t":"TZXS8","d":870,"price":86.8,"ytm":8.21},{"t":"TZXM9","d":1050,"price":82.8,"ytm":8.41},{"t":"TXMJ9","d":1143,"price":84.7,"ytm":5.96},{"t":"DICP","d":2789,"price":50550.0,"ytm":8.06},{"t":"PARP","d":4615,"price":33315.0,"ytm":8.7},{"t":"CUAP","d":5710,"price":41780.0,"ytm":8.5}];
 const GD_SERIES = ['GD29','GD30','GD35','GD38','GD41','GD46'];
 const AL_SERIES = ['AL29','AL30','AL35','AL41','AO27','AO28','AN29','AE38','BPOA7','BPOB7','BPOC7','BPOD7','BPOA8','BPOB8'];
 const GD_OFF  = ['GD29'];                                    // off-curve for NY fit
@@ -1851,8 +1865,6 @@ const letrasCmpVis = {lecap: true, tamar: true};
 const letrasCmpDate = {lecap: null, tamar: null};
 
 function initLetras(){
-  buildLetrasBtns('lecap-period-btns', 'lecap', LECAP_HIST);
-  buildLetrasBtns('tamar-period-btns', 'tamar', TAMAR_HIST);
   drawLetraChart('lecapC','lecap-tt','lecap', LECAP_TODAY, LECAP_HIST);
   drawLetraChart('tamarC','tamar-tt','tamar', TAMAR_TODAY, TAMAR_HIST);
   drawSimpleScatter('dlC',  'dl-tt',  DL_TODAY,  'DL — YTM% vs Días',  '#CCA43B', 0);
@@ -1896,7 +1908,7 @@ function drawSimpleScatter(canvasId, ttId, data, title, color, offDays){
     ctx.strokeStyle='rgba(100,140,180,0.5)'; ctx.lineWidth=1;
     ctx.beginPath(); ctx.moveTo(pad.left,zy); ctx.lineTo(pad.left+cW,zy); ctx.stroke();
   }
-  var xTicks=[0,100,200,300,400,500,600,700,800].filter(function(t){return t<=maxD;});
+  var xTicks=[0,100,200,300,400,500,600,700,800,1000,1500,2000,3000,4500,6000].filter(function(t){return t<=maxD*1.05;});
   xTicks.forEach(function(t){
     var x=toX(t);
     ctx.strokeStyle='rgba(180,200,220,0.3)'; ctx.lineWidth=1;
