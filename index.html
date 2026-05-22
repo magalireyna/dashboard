@@ -244,21 +244,21 @@ canvas{display:block;width:100%!important}
       <div class="leg" id="leg-mep" onclick="togTC('mep',this)"><div class="lline" style="background:#5BABBE"></div>MEP</div>
       <div class="leg" id="leg-ccl" onclick="togTC('ccl',this)"><div class="lline" style="background:#CCA43B"></div>CCL</div>
     </div>
-    <div class="cw" id="tc-cw" style="height:280px;overflow:hidden;display:block">
+    <div class="cw" id="tc-cw" style="height:280px">
       <canvas id="tcC"></canvas>
       <div class="tt" id="tc-tt"></div>
     </div>
-    <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:10px;clear:both;position:relative;z-index:1">
-      <div style="margin-bottom:12px;overflow:hidden">
+    <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:10px;overflow:hidden">
+      <div style="margin-bottom:12px">
         <div style="font-family:var(--mono);font-size:10px;color:var(--t3);margin-bottom:4px;letter-spacing:.05em">BRECHA CCL %</div>
-        <div class="cw" id="brecha-cw" style="height:110px;overflow:hidden">
+        <div class="cw" id="brecha-cw" style="height:110px">
           <canvas id="brechaC"></canvas>
           <div class="tt" id="brecha-tt"></div>
         </div>
       </div>
-      <div style="overflow:hidden">
+      <div>
         <div style="font-family:var(--mono);font-size:10px;color:var(--t3);margin-bottom:4px;letter-spacing:.05em">CANJE % (CCL-MEP/MEP)</div>
-        <div class="cw" id="canje-cw" style="height:110px;overflow:hidden">
+        <div class="cw" id="canje-cw" style="height:110px">
           <canvas id="canjeC"></canvas>
           <div class="tt" id="canje-tt"></div>
         </div>
@@ -449,7 +449,7 @@ function showTab(name, btn){
   if(!tabInited[name]){
     tabInited[name]=true;
     if(name==='bonos') initBonos();
-    if(name==='tc')    initTC();
+    if(name==='tc')    { setChartHeights(); initTC(); }
     if(name==='res')   initRes();
     if(name==='mae')    initMAE();
     if(name==='letras') initLetras();
@@ -1097,7 +1097,8 @@ function renderTC(){
   if(!tcHide.mep) series.push({label:'MEP',      data:d.filter(function(r){return r.mep;}).map(function(r){return {x:r.f,y:r.mep};}),color:'#5BABBE',width:1.5,axis:'L',type:'line'});
   if(!tcHide.ccl) series.push({label:'CCL',      data:d.filter(function(r){return r.ccl;}).map(function(r){return {x:r.f,y:r.ccl};}),color:'#CCA43B',width:1.5,axis:'L',type:'line'});
   if(series.length){
-    drawChart({canvasId:'tcC',wrapH:280,series:series,opts:{leftFmt:function(v){return '$'+fmtN(v,0);},leftLabel:'Tipo de cambio (ARS)'}});
+    var tcH = document.getElementById('tc-cw').offsetHeight || 240;
+    drawChart({canvasId:'tcC',wrapH:tcH,series:series,opts:{leftFmt:function(v){return '$'+fmtN(v,0);},leftLabel:'Tipo de cambio (ARS)'}});
     setupTooltip('tcC','tc-tt',d,function(p){
       var h='<div class="tt-date">'+fmtD(p.f)+'</div>';
       if(!tcHide.may&&p.may) h+='<div class="tt-row"><span class="tt-lbl" style="color:#003366">■ Mayorista</span><span class="tt-val">$'+fmtN(p.may)+'</span></div>';
@@ -1615,9 +1616,8 @@ function setChartHeights(){
   const h2 = isMobile ? 280 : isTablet ? 320 : 380;
   const h3 = isMobile ? 270 : isTablet ? 310 : 360;
   ['bonos-cw-ny','bonos-cw-arg'].forEach(id=>{const el=document.getElementById(id);if(el) el.style.height=(isMobile?220:isTablet?260:300)+'px';});
-  var tcEl=document.getElementById('tc-cw'); if(tcEl){ tcEl.style.height=(isMobile?200:240)+'px'; }
-  var brEl=document.getElementById('brecha-cw'); if(brEl){ brEl.style.height=(isMobile?90:110)+'px'; }
-  var caEl=document.getElementById('canje-cw'); if(caEl){ caEl.style.height=(isMobile?90:110)+'px'; }
+  var tcEl=document.getElementById('tc-cw'); if(tcEl) tcEl.style.height=(isMobile?200:240)+'px';
+  var brEl=document.getElementById('brecha-cw'); if(brEl) brEl.style.height=(isMobile?100:120)+'px';
   const re=document.getElementById('res-cw'); if(re) re.style.height=h2+'px';
   const me=document.getElementById('mae-cw'); if(me) me.style.height=h3+'px';
 }
