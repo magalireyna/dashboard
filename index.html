@@ -244,21 +244,21 @@ canvas{display:block;width:100%!important}
       <div class="leg" id="leg-mep" onclick="togTC('mep',this)"><div class="lline" style="background:#5BABBE"></div>MEP</div>
       <div class="leg" id="leg-ccl" onclick="togTC('ccl',this)"><div class="lline" style="background:#CCA43B"></div>CCL</div>
     </div>
-    <div class="cw" id="tc-cw" style="height:280px">
+    <div class="cw" id="tc-cw" style="height:280px;overflow:hidden;display:block">
       <canvas id="tcC"></canvas>
       <div class="tt" id="tc-tt"></div>
     </div>
-    <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:10px;overflow:hidden">
-      <div style="margin-bottom:12px">
+    <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:10px;clear:both;position:relative;z-index:1">
+      <div style="margin-bottom:12px;overflow:hidden">
         <div style="font-family:var(--mono);font-size:10px;color:var(--t3);margin-bottom:4px;letter-spacing:.05em">BRECHA CCL %</div>
-        <div class="cw" id="brecha-cw" style="height:110px">
+        <div class="cw" id="brecha-cw" style="height:110px;overflow:hidden">
           <canvas id="brechaC"></canvas>
           <div class="tt" id="brecha-tt"></div>
         </div>
       </div>
-      <div>
+      <div style="overflow:hidden">
         <div style="font-family:var(--mono);font-size:10px;color:var(--t3);margin-bottom:4px;letter-spacing:.05em">CANJE % (CCL-MEP/MEP)</div>
-        <div class="cw" id="canje-cw" style="height:110px">
+        <div class="cw" id="canje-cw" style="height:110px;overflow:hidden">
           <canvas id="canjeC"></canvas>
           <div class="tt" id="canje-tt"></div>
         </div>
@@ -1615,8 +1615,9 @@ function setChartHeights(){
   const h2 = isMobile ? 280 : isTablet ? 320 : 380;
   const h3 = isMobile ? 270 : isTablet ? 310 : 360;
   ['bonos-cw-ny','bonos-cw-arg'].forEach(id=>{const el=document.getElementById(id);if(el) el.style.height=(isMobile?220:isTablet?260:300)+'px';});
-  var tcEl=document.getElementById('tc-cw'); if(tcEl) tcEl.style.height=(isMobile?200:240)+'px';
-  var brEl=document.getElementById('brecha-cw'); if(brEl) brEl.style.height=(isMobile?100:120)+'px';
+  var tcEl=document.getElementById('tc-cw'); if(tcEl){ tcEl.style.height=(isMobile?200:240)+'px'; }
+  var brEl=document.getElementById('brecha-cw'); if(brEl){ brEl.style.height=(isMobile?90:110)+'px'; }
+  var caEl=document.getElementById('canje-cw'); if(caEl){ caEl.style.height=(isMobile?90:110)+'px'; }
   const re=document.getElementById('res-cw'); if(re) re.style.height=h2+'px';
   const me=document.getElementById('mae-cw'); if(me) me.style.height=h3+'px';
 }
