@@ -112,7 +112,7 @@ canvas{display:block;width:100%!important}
 .ctgl.on{color:#fff;border-color:transparent}
 
 @media(max-width:768px){
-  #bonos-grid,#letras-grid,#rv-bottom-grid{grid-template-columns:1fr !important}
+  #bonos-grid,#letras-grid,#letras-tables-grid,#rv-bottom-grid{grid-template-columns:1fr !important}
   #tab-tc .card{overflow:hidden}
   #brecha-cw,#canje-cw{height:90px !important}
   #bonos-cw-ny,#bonos-cw-arg{height:240px !important}
@@ -1967,26 +1967,26 @@ function buildSemaforo(){
                       .sort(function(a,b){ return (b.oi||0)-(a.oi||0); })
                       .slice(0,4);
 
-    // Signal: based on weighted avg 1d change (negative = prices fell = less devaluation expected = green)
+    // Signal: based on weighted avg 1d change in ARS (negative = less devaluation = green)
     var totalOI=0, weightedChg=0;
     liquid.forEach(function(c){ if(c.chg1d!=null&&c.oi){ totalOI+=c.oi; weightedChg+=c.chg1d*c.oi; } });
     var avgChg1d = totalOI>0 ? weightedChg/totalOI : null;
-    // green = prices fell (less devaluation expected), red = rose
-    var rofexSig = avgChg1d===null?'grey': avgChg1d<-200?'green': avgChg1d>200?'red':'yellow';
+    // values in ARS: ±1 = normal, >5 = significant move
+    var rofexSig = avgChg1d===null?'grey': avgChg1d<-1?'green': avgChg1d>1?'red':'yellow';
 
     // Main contract (highest OI)
     var top = liquid[0];
     var topMonth = top ? new Date(top.vto+'T00:00:00').toLocaleString('es-AR',{month:'short',year:'2-digit'}).toUpperCase() : '';
-    var topChgArs = top&&top.chg1d!=null ? top.chg1d/1000 : null;
-    var topPct = topChgArs&&top.price ? topChgArs/top.price*100 : null;
+    var topChgArs = top&&top.chg1d!=null ? top.chg1d : null;  // already in ARS
+    var topPct = topChgArs!=null&&top.price ? topChgArs/top.price*100 : null;
 
     var mainVal = top ? '$'+fmtN(top.price,1)+' <span style="font-size:13px">('+topMonth+')</span>' : 'S/D';
 
     // Build rows for each liquid contract
     var rofexDetail = liquid.map(function(c){
       var month = new Date(c.vto+'T00:00:00').toLocaleString('es-AR',{month:'short',year:'2-digit'}).toUpperCase();
-      var chgArs = c.chg1d!=null ? c.chg1d/1000 : null;
-      var chgPct = chgArs&&c.price ? chgArs/c.price*100 : null;
+      var chgArs = c.chg1d!=null ? c.chg1d : null;  // already in ARS
+      var chgPct = chgArs!=null&&c.price ? chgArs/c.price*100 : null;
       var col = chgArs===null?'#8aa0b4':chgArs<0?'#2e8b57':chgArs>0?'#bf2b2b':'#8aa0b4';
       return '<div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid rgba(0,0,0,.06)">'
         +'<span style="font-family:var(--mono);font-size:11px;color:var(--t2);min-width:60px">'+month+'</span>'
