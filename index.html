@@ -745,7 +745,7 @@ function setupTooltip(canvasId, ttId, data, buildHTML){
 const CURVE_COLS=['#003366','#5BABBE','#52DED7','#a8d8e0'];
 const bonosDates=Object.keys(BONOS).sort();
 // Ley NY: GD + BPO series / Ley ARG: AL, AO, AN, AE series
-const RV   = {"lider": [{"s": "YPFD", "p": 83050.0, "v": -0.27}, {"s": "GGAL", "p": 7350.0, "v": -3.09}, {"s": "PAMP", "p": 5115.0, "v": -1.35}, {"s": "BMA", "p": 13050.0, "v": -2.01}, {"s": "SUPV", "p": 2902.5, "v": -3.65}, {"s": "TGSU2", "p": 9205.0, "v": -2.48}, {"s": "BBAR", "p": 9030.0, "v": -4.6}, {"s": "TRAN", "p": 3852.5, "v": 0.39}, {"s": "CEPU", "p": 2309.0, "v": -2.4}, {"s": "LOMA", "p": 3452.5, "v": -2.13}], "cedears": [{"s": "NU", "p": 8855.0, "v": -1.0}, {"s": "MU", "p": 328475.0, "v": 1.87}, {"s": "MSFT", "p": 21640.0, "v": -2.3}, {"s": "ORCL", "p": 116925.0, "v": -4.89}, {"s": "RGTI", "p": 18300.0, "v": -9.64}, {"s": "MELI", "p": 20650.0, "v": -1.14}, {"s": "IBM", "p": 31160.0, "v": -6.7}, {"s": "SPY", "p": 19090.0, "v": 0.31}, {"s": "NVDA", "p": 13610.0, "v": -2.65}, {"s": "META", "p": 39340.0, "v": 4.85}], "general": [], "etf": [{"s": "SPY", "p": 19090.0, "v": 0.31}, {"s": "QQQ", "p": 56500.0, "v": 0.84}, {"s": "EWZ", "p": 26280.0, "v": -2.23}, {"s": "DIA", "p": 38480.0, "v": -0.25}, {"s": "IWM", "p": 43560.0, "v": -0.41}, {"s": "IVV", "p": 1668.0, "v": 0.36}, {"s": "EEM", "p": 21160.0, "v": -0.51}]};
+const RV   = {"lider": [{"s": "YPFD", "p": 83050.0, "v": -0.27}, {"s": "GGAL", "p": 7350.0, "v": -3.09}, {"s": "PAMP", "p": 5115.0, "v": -1.35}, {"s": "BMA", "p": 13050.0, "v": -2.01}, {"s": "SUPV", "p": 2902.5, "v": -3.65}, {"s": "TGSU2", "p": 9205.0, "v": -2.48}, {"s": "BBAR", "p": 9030.0, "v": -4.6}, {"s": "TRAN", "p": 3852.5, "v": 0.39}, {"s": "CEPU", "p": 2309.0, "v": -2.4}, {"s": "LOMA", "p": 3452.5, "v": -2.13}], "cedears": [{"s": "NU", "p": 8855.0, "v": -1.0}, {"s": "MU", "p": 328475.0, "v": 1.87}, {"s": "MSFT", "p": 21640.0, "v": -2.3}, {"s": "ORCL", "p": 116925.0, "v": -4.89}, {"s": "RGTI", "p": 18300.0, "v": -9.64}, {"s": "MELI", "p": 20650.0, "v": -1.14}, {"s": "IBM", "p": 31160.0, "v": -6.7}, {"s": "SPY", "p": 19090.0, "v": 0.31}, {"s": "NVDA", "p": 13610.0, "v": -2.65}, {"s": "META", "p": 39340.0, "v": 4.85}], "general": [{"s": "SBSRF", "p": 12.6, "v": 15.59}, {"s": "TECO2", "p": 4052.5, "v": -3.05}, {"s": "A3", "p": 3395.0, "v": -0.87}, {"s": "IRSA", "p": 2235.0, "v": -0.66}, {"s": "BHIP", "p": 339.0, "v": -4.26}, {"s": "AGRO", "p": 43.7, "v": 0.45}, {"s": "CTIO", "p": 1780.0, "v": -0.55}, {"s": "MIRG", "p": 16925.0, "v": -0.58}, {"s": "CVH", "p": 8710.0, "v": -1.91}, {"s": "AUSO", "p": 3680.0, "v": -1.98}], "etf": [{"s": "SPY", "p": 19090.0, "v": 0.31}, {"s": "QQQ", "p": 56500.0, "v": 0.84}, {"s": "EWZ", "p": 26280.0, "v": -2.23}, {"s": "DIA", "p": 38480.0, "v": -0.25}, {"s": "IWM", "p": 43560.0, "v": -0.41}, {"s": "IVV", "p": 1668.0, "v": 0.36}, {"s": "EEM", "p": 21160.0, "v": -0.51}]};
 const BONOS_TABLE = [{"n": "GD29", "p": 63.1356, "tir": 8.498392, "dur": 1.507411, "vp1d": -0.961682, "vtir1d": 99.008203, "vp7d": -0.195229, "vtir7d": 55.216134, "vp1m": 0.022187, "vtir1m": 60.644031, "vp6m": -10.216429, "vtir6m": -7.199705, "vp1a": -16.139337, "vtir1a": -233.018667}, {"n": "GD30", "p": 63.4723, "tir": 8.180615, "dur": 1.960794, "vp1d": 0.499177, "vtir1d": -4.216135, "vp7d": 0.971468, "vtir7d": -21.217883, "vp1m": 1.398981, "vtir1m": -26.538014, "vp6m": -4.372111, "vtir6m": -176.617891, "vp1a": -8.922338, "vtir1a": -331.2352}, {"n": "GD35", "p": 78.7626, "tir": 9.714821, "dur": 5.580759, "vp1d": -0.180031, "vtir1d": 11.885017, "vp7d": 0.787157, "vtir7d": -3.487229, "vp1m": 3.868322, "vtir1m": -54.413557, "vp6m": 7.410932, "vtir6m": -82.364202, "vp1a": 13.852991, "vtir1a": -160.785675}, {"n": "GD38", "p": 82.5258, "tir": 9.665477, "dur": 4.800361, "vp1d": -0.283192, "vtir1d": 16.14663, "vp7d": 0.648311, "vtir7d": -0.931621, "vp1m": 4.126559, "vtir1m": -69.090486, "vp6m": 7.135045, "vtir6m": -99.28, "vp1a": 12.264324, "vtir1a": -174.134135}, {"n": "GD41", "p": 73.2829, "tir": 9.77094, "dur": 6.082805, "vp1d": -0.412905, "vtir1d": 15.101314, "vp7d": 1.18992, "vtir7d": -10.374784, "vp1m": 4.638936, "vtir1m": -63.485146, "vp6m": 7.335898, "vtir6m": -70.518136, "vp1a": 14.440878, "vtir1a": -149.952173}, {"n": "GD46", "p": 70.411, "tir": 9.509985, "dur": 6.324201, "vp1d": 0.125328, "vtir1d": 5.178332, "vp7d": 1.059947, "vtir7d": -7.81399, "vp1m": 4.193246, "vtir1m": -54.032296, "vp6m": 4.625879, "vtir6m": -91.676682, "vp1a": 6.406369, "vtir1a": -159.300655}, {"n": "AO27", "p": 98.6877, "tir": 7.552699, "dur": 1.365742, "vp1d": 0.582966, "vtir1d": -12.87061, "vp7d": 0.348866, "vtir7d": -21.462739, "vp1m": 0.777218, "vtir1m": -31.963289, "vp6m": null, "vtir6m": null, "vp1a": null, "vtir1a": null}, {"n": "AO28", "p": 92.1054, "tir": 10.331808, "dur": 2.23922, "vp1d": 0.042209, "vtir1d": 18.907785, "vp7d": -0.205292, "vtir7d": 14.546514, "vp1m": 1.109412, "vtir1m": -27.914762, "vp6m": null, "vtir6m": null, "vp1a": null, "vtir1a": null}, {"n": "AL29", "p": 61.9604, "tir": 9.864902, "dur": 1.514383, "vp1d": 0.075035, "vtir1d": 25.673628, "vp7d": 0.10045, "vtir7d": 36.784858, "vp1m": 1.292754, "vtir1m": -18.995404, "vp6m": -7.010409, "vtir6m": -218.788624, "vp1a": -15.865353, "vtir1a": -225.6037}, {"n": "AL30", "p": 62.0, "tir": 9.48985, "dur": 1.941001, "vp1d": -0.193175, "vtir1d": 34.715116, "vp7d": 0.404858, "vtir7d": 11.058629, "vp1m": 1.290639, "vtir1m": -16.111225, "vp6m": -1.899753, "vtir6m": -302.544683, "vp1a": -8.742227, "vtir1a": -324.032634}, {"n": "AN29", "p": 90.3097, "tir": 10.220564, "dur": 3.201332, "vp1d": 0.041982, "vtir1d": 13.399959, "vp7d": -2.719035, "vtir7d": 1.901627, "vp1m": -1.596255, "vtir1m": -23.634911, "vp6m": null, "vtir6m": null, "vp1a": null, "vtir1a": null}, {"n": "AL35", "p": 76.2407, "tir": 10.358333, "dur": 5.548818, "vp1d": -0.527009, "vtir1d": 18.957853, "vp7d": 1.451843, "vtir7d": -16.356707, "vp1m": 2.702983, "vtir1m": -31.832695, "vp6m": 5.480657, "vtir6m": -45.199156, "vp1a": 11.190317, "vtir1a": -112.542629}, {"n": "AE38", "p": 78.6768, "tir": 10.773409, "dur": 4.702873, "vp1d": -0.347571, "vtir1d": 18.224239, "vp7d": 0.504047, "vtir7d": 2.855659, "vp1m": 2.643606, "vtir1m": -35.639167, "vp6m": 5.359981, "vtir6m": -57.200789, "vp1a": 10.192828, "vtir1a": -125.104785}, {"n": "AL41", "p": 71.5994, "tir": 10.193154, "dur": 6.025278, "vp1d": -0.277468, "vtir1d": 12.84945, "vp7d": 0.283246, "vtir7d": 6.040215, "vp1m": 3.127085, "vtir1m": -37.088156, "vp6m": 5.831433, "vtir6m": -44.276834, "vp1a": 13.278944, "vtir1a": -129.998803}, {"n": "BPOA7", "p": 97.5059, "tir": 8.188501, "dur": 1.129699, "vp1d": 0.46758, "vtir1d": -4.303098, "vp7d": 0.308468, "vtir7d": 25.514245, "vp1m": 0.114038, "vtir1m": 69.240808, "vp6m": 0.479138, "vtir6m": 114.028156, "vp1a": -1.7193, "vtir1a": 237.668395}, {"n": "BPOB7", "p": 97.3871, "tir": 8.305359, "dur": 1.129618, "vp1d": -0.113251, "vtir1d": 51.048458, "vp7d": 0.353134, "vtir7d": 21.551013, "vp1m": 0.478094, "vtir1m": 37.740231, "vp6m": 1.509251, "vtir6m": 48.949897, "vp1a": 0.694652, "vtir1a": 117.531061}, {"n": "BPOC7", "p": 97.3805, "tir": 8.311858, "dur": 1.129613, "vp1d": -0.337463, "vtir1d": 72.417438, "vp7d": 0.248901, "vtir7d": 31.335652, "vp1m": 0.625016, "vtir1m": 24.735868, "vp6m": 3.148085, "vtir6m": -59.51792, "vp1a": 2.598495, "vtir1a": 19.800365}, {"n": "BPOD7", "p": 97.3805, "tir": 8.311858, "dur": 1.129613, "vp1d": 0.30398, "vtir1d": 11.304677, "vp7d": 0.276719, "vtir7d": 28.727472, "vp1m": 0.793261, "vtir1m": 9.795308, "vp6m": 3.429989, "vtir6m": -78.151464, "vp1a": 2.598495, "vtir1a": 19.800365}, {"n": "BPOA8", "p": 87.6754, "tir": 9.269769, "dur": 2.331434, "vp1d": 0.223576, "vtir1d": 9.39846, "vp7d": 0.807901, "vtir7d": -9.594738, "vp1m": 1.662239, "vtir1m": -30.824065, "vp6m": 4.799028, "vtir6m": -46.25836, "vp1a": null, "vtir1a": null}, {"n": "BPOB8", "p": 87.9395, "tir": 9.128908, "dur": 2.331582, "vp1d": 0.747466, "vtir1d": -15.010774, "vp7d": 0.955141, "vtir7d": -16.480803, "vp1m": 2.35188, "vtir1m": -61.985403, "vp6m": 11.163823, "vtir6m": -282.979399, "vp1a": null, "vtir1a": null}];
 const LETRAS     = {"lecap": [{"t": "S12J6", "d": 10, "y": 1.7158, "price": 102.486}, {"t": "T30J6", "d": 28, "y": 1.8189, "price": 142.65}, {"t": "S17L6", "d": 45, "y": 1.8577, "price": 105.11}, {"t": "S31L6", "d": 59, "y": 1.7553, "price": 113.85}, {"t": "S14G6", "d": 73, "y": 1.8969, "price": 103.33}, {"t": "S31G6", "d": 90, "y": 1.8829, "price": 120.298}, {"t": "S15S6", "d": 105, "y": 1.9358, "price": 100.38}, {"t": "S30S6", "d": 120, "y": 1.9472, "price": 108.95}, {"t": "S30O6", "d": 150, "y": 1.8971, "price": 123.3}, {"t": "S30N6", "d": 181, "y": 1.8692, "price": 116.3}, {"t": "T15E7", "d": 227, "y": 2.0018, "price": 138.851}, {"t": "T30A7", "d": 332, "y": 2.0216, "price": 126.249}, {"t": "T31Y7", "d": 363, "y": 2.0176, "price": 119.18}, {"t": "T30J7", "d": 393, "y": 1.8238, "price": 123.289}], "tamar": [{"t": "M31G6", "d": 90, "y": 2.7198, "price": 122.87}, {"t": "TMF27", "d": 269, "y": 2.5401, "price": 114.85}, {"t": "TMG27", "d": 455, "y": 2.411, "price": 108.0}, {"t": "TMF28", "d": 633, "y": 2.4428, "price": 105.0}, {"t": "TMG28", "d": 821, "y": 2.4747, "price": 101.7}]};
 const BONOS_PESOS     = {"tamar": [{"t": "TTJ26", "days": 27, "precio": 159.9, "tem": null, "tea": 25.141922, "dod": 0.0313}, {"t": "TTS26", "days": 104, "precio": 159.15, "tem": null, "tea": 27.043397, "dod": -0.0942}, {"t": "TTD26", "days": 195, "precio": 159.05, "tem": null, "tea": 25.890269, "dod": -0.1569}, {"t": "TXMJ8", "days": 758, "precio": 95.2, "tem": null, "tea": 33.057134, "dod": null}, {"t": "TXMJ9", "days": 1122, "precio": 89.4, "tem": null, "tea": 34.913864, "dod": 0.112}], "dl": [{"t": "TZV26", "days": 27, "precio": 143000.0, "ytm": 5.414357, "dod": 0.8463}, {"t": "D30S6", "days": 119, "precio": 142600.0, "ytm": 2.048976, "dod": null}, {"t": "D31M7", "days": 301, "precio": 138110.0, "ytm": 4.802004, "dod": 0.7808}, {"t": "BPOC7", "days": 331, "precio": 147500.0, "ytm": 5.985599, "dod": null}, {"t": "TZV27", "days": 392, "precio": 137510.0, "ytm": 4.086391, "dod": null}, {"t": "BPOA8", "days": 697, "precio": 132800.0, "ytm": 7.576254, "dod": null}, {"t": "TZV28", "days": 758, "precio": 125100.0, "ytm": 6.853839, "dod": 0.5708}], "cer": [{"t": "X29Y6", "days": 0, "precio": 118.06, "ytm": null, "dod": null}, {"t": "TZX26", "days": 27, "precio": 388.95, "ytm": -9.1554, "dod": 0.1287}, {"t": "X31L6", "days": 58, "precio": 114.2, "ytm": -6.984594, "dod": null}, {"t": "TX26", "days": 159, "precio": 697.2, "ytm": -1.185481, "dod": null}, {"t": "X30S6", "days": 119, "precio": 109.3, "ytm": -2.89319, "dod": null}, {"t": "TZXO6", "days": 149, "precio": 162.25, "ytm": -1.560114, "dod": null}, {"t": "X30N6", "days": 180, "precio": 117.7, "ytm": -0.615073, "dod": null}, {"t": "TZXD6", "days": 195, "precio": 286.2, "ytm": -0.397846, "dod": null}, {"t": "TZXM7", "days": 301, "precio": 211.35, "ytm": 1.667646, "dod": null}, {"t": "TZXA7", "days": 331, "precio": 116.75, "ytm": 1.891709, "dod": null}, {"t": "TZXY7", "days": 361, "precio": 114.95, "ytm": 2.112239, "dod": null}, {"t": "TZX27", "days": 392, "precio": 376.3, "ytm": 2.478262, "dod": null}, {"t": "TX28", "days": 890, "precio": 1652.0, "ytm": 5.221772, "dod": null}, {"t": "TZXS7", "days": 484, "precio": 101.25, "ytm": 4.305489, "dod": -0.0494}, {"t": "TZXD7", "days": 560, "precio": 265.45, "ytm": 4.891944, "dod": 0.0188}, {"t": "TZXM8", "days": 667, "precio": 95.01, "ytm": 6.588791, "dod": null}, {"t": "TZX28", "days": 758, "precio": 335.5, "ytm": 7.034412, "dod": null}, {"t": "TXMJ8", "days": 758, "precio": 95.2, "ytm": 3.435144, "dod": null}, {"t": "TZXS8", "days": 849, "precio": 91.1, "ytm": 7.194808, "dod": -0.4372}, {"t": "TZXM9", "days": 1029, "precio": 87.4, "ytm": 7.356133, "dod": null}, {"t": "TXMJ9", "days": 1122, "precio": 89.4, "ytm": 4.954327, "dod": 0.112}, {"t": "DICP", "days": 2768, "precio": 52850.0, "ytm": 7.454753, "dod": null}, {"t": "PARP", "days": 4594, "precio": 34840.0, "ytm": 8.418206, "dod": null}, {"t": "CUAP", "days": 5689, "precio": 42900.0, "ytm": 8.502016, "dod": null}]};
@@ -2595,7 +2595,6 @@ function xlDownload(wb, filename){
 }
 
 function makeWB(sheets){
-  // sheets: [{name, data:[{col:val}]}]
   var wb = XLSX.utils.book_new();
   sheets.forEach(function(s){
     var ws = XLSX.utils.json_to_sheet(s.data);
@@ -2604,77 +2603,139 @@ function makeWB(sheets){
   return wb;
 }
 
-function fmtDateXL(s){ return s; }
-
+// TC — full TIPO DE CAMBIO sheet
 function downloadXL_TC(){
   var rows = TC.map(function(r){
-    return {'Fecha':r.f,'Mayorista':r.may,'MEP':r.mep,'CCL':r.ccl,'Brecha CCL %':r.br,'Canje %':r.canje};
+    return {
+      'Fecha':r.f,
+      'Mayorista':r.may,
+      'MEP':r.mep,
+      'CCL':r.ccl,
+      'Brecha CCL %':r.br,
+      'Canje %':r.canje,
+      'Banda Superior':r.techo
+    };
   });
-  xlDownload(makeWB([{name:'Tipo de Cambio',data:rows}]), 'TC_'+lastOf(TC).f+'.xlsx');
+  xlDownload(makeWB([{name:'Tipo de Cambio',data:rows}]), 'TipoDeCambio_'+lastOf(TC).f+'.xlsx');
 }
 
+// Bonos U$S — full table with all variation periods
 function downloadXL_Bonos(){
   var rows = BONOS_TABLE.map(function(b){
-    return {'Bono':b.n,'Precio':b.p,'TIR %':b.tir,'Duration':b.dur,
-            'Var Precio 1D %':b.vp1d,'Var TIR 1D (bps)':b.vtir1d,
-            'Var Precio 1S %':b.vp7d,'Var TIR 1S (bps)':b.vtir7d,
-            'Var Precio 1M %':b.vp1m,'Var TIR 1M (bps)':b.vtir1m,
-            'Var Precio 6M %':b.vp6m,'Var TIR 6M (bps)':b.vtir6m,
-            'Var Precio 1A %':b.vp1a,'Var TIR 1A (bps)':b.vtir1a};
+    return {
+      'Bono':b.n,
+      'Precio':b.p,
+      'TIR %':b.tir,
+      'Duration':b.dur,
+      'Var Precio 1D %':b.vp1d,
+      'Var TIR 1D bps':b.vtir1d,
+      'Var Precio 1S %':b.vp7d,
+      'Var TIR 1S bps':b.vtir7d,
+      'Var Precio 1M %':b.vp1m,
+      'Var TIR 1M bps':b.vtir1m,
+      'Var Precio 6M %':b.vp6m,
+      'Var TIR 6M bps':b.vtir6m,
+      'Var Precio 1A %':b.vp1a,
+      'Var TIR 1A bps':b.vtir1a
+    };
   });
-  xlDownload(makeWB([{name:'Bonos USD',data:rows}]), 'Bonos_USD_'+BONOS_TODAY+'.xlsx');
+  xlDownload(makeWB([{name:'Bonos USD',data:rows}]), 'BonosUSD_'+BONOS_TODAY+'.xlsx');
 }
 
+// Reservas — full RESERVAS-COMPRAS sheet
 function downloadXL_Res(){
   var rows = RES.map(function(r){
-    return {'Fecha':r.f,'RRII (M USD)':r.rrii,'Compras Diarias (M USD)':r.compras,'Acumulado (M USD)':r.acum};
+    return {
+      'Fecha':r.f,
+      'RRII Brutas (M USD)':r.rrii,
+      'Compras Diarias (M USD)':r.compras,
+      'Acumulado (M USD)':r.acum
+    };
   });
-  xlDownload(makeWB([{name:'Reservas',data:rows}]), 'Reservas_'+lastOf(RES).f+'.xlsx');
+  xlDownload(makeWB([{name:'Reservas-Compras',data:rows}]), 'Reservas_'+lastOf(RES).f+'.xlsx');
 }
 
+// MAE — full MAE sheet
 function downloadXL_MAE(){
   var rows = MAE.map(function(r){
-    return {'Fecha':r.f,'Vol Total (M USD)':r.vol,'Cable (M USD)':r.cable,'MEP (M USD)':r.mep,'Canje (M USD)':r.canje};
+    return {
+      'Fecha':r.f,
+      'Volumen Total (M USD)':r.vol,
+      'Cable (M USD)':r.cable,
+      'MEP (M USD)':r.mep,
+      'Canje (M USD)':r.canje
+    };
   });
-  xlDownload(makeWB([{name:'Volumen MAE',data:rows}]), 'MAE_'+lastOf(MAE).f+'.xlsx');
+  xlDownload(makeWB([{name:'MAE',data:rows}]), 'MAE_'+lastOf(MAE).f+'.xlsx');
 }
 
+// Futuros — full FUTUROS sheet
 function downloadXL_Futuros(){
-  var rows = ROFEX.filter(function(r){return r.oi&&r.oi>500;}).map(function(r){
-    return {'Vto':r.vto,'Precio':r.price,'Días':r.days,'TNA %':r.tna,
-            'Contratos':r.contracts,'OI (K USD)':r.oi,
-            '∆ 1D':r.chg1d,'∆ 1 Sem':r.chg1w,'∆ 1 Mes':r.chg1m};
+  var rows = ROFEX.map(function(r){
+    return {
+      'Vencimiento':r.vto,
+      'Precio':r.price,
+      'Días':r.days,
+      'TNA %':r.tna,
+      'Contratos':r.contracts,
+      'OI (K USD)':r.oi,
+      'Δ 1D':r.chg1d,
+      'Δ 1 Sem':r.chg1w,
+      'Δ 1 Mes':r.chg1m
+    };
   });
   xlDownload(makeWB([{name:'Futuros',data:rows}]), 'Futuros_'+BONOS_TODAY+'.xlsx');
 }
 
+// Renta Variable — full RENTA VARIABLE sheet (4 solapas)
 function downloadXL_RV(){
   var sheets = [];
-  if(RV.lider.length)   sheets.push({name:'Lideres',   data:RV.lider.map(function(r){return{'Símbolo':r.s,'Precio':r.p,'Var % día':r.v};})});
-  if(RV.cedears.length) sheets.push({name:'CEDEARs',   data:RV.cedears.map(function(r){return{'Símbolo':r.s,'Precio':r.p,'Var % día':r.v};})});
-  if(RV.general.length) sheets.push({name:'Gral',      data:RV.general.map(function(r){return{'Símbolo':r.s,'Precio':r.p,'Var % día':r.v};})});
-  if(RV.etf.length)     sheets.push({name:'ETFs',      data:RV.etf.map(function(r){return{'Símbolo':r.s,'Precio':r.p,'Var % día':r.v};})});
+  function rvSheet(name, items){
+    return {name:name, data:items.map(function(r){
+      return {'Símbolo':r.s,'Último':r.p,'Var % día':r.v};
+    })};
+  }
+  if(RV.lider&&RV.lider.length)   sheets.push(rvSheet('Líderes',  RV.lider));
+  if(RV.cedears&&RV.cedears.length)sheets.push(rvSheet('CEDEARs',  RV.cedears));
+  if(RV.general&&RV.general.length)sheets.push(rvSheet('Gral',     RV.general));
+  if(RV.etf&&RV.etf.length)        sheets.push(rvSheet('ETFs',     RV.etf));
   xlDownload(makeWB(sheets), 'RentaVariable_'+BONOS_TODAY+'.xlsx');
 }
 
+// Bonos $ — BONOS $ sheet (TAMAR, DL, CER)
 function downloadXL_BonosPesos(section){
-  var items = BONOS_PESOS[section] || [];
+  var items = (BONOS_PESOS&&BONOS_PESOS[section]) ? BONOS_PESOS[section] : [];
   var rows = [];
   if(section==='tamar'){
-    rows = items.map(function(b){ return {'Instrumento':b.t,'Precio':b.precio,'TEM %':b.tem,'TEA %':b.tea,'∆ Precio 1D %':b.dod,'Días al vto':b.days}; });
+    rows = items.map(function(b){
+      return {'Instrumento':b.t,'Precio':b.precio,'TEM %':b.tem,'TEA %':b.tea,'Δ Precio 1D %':b.dod,'Días al vto':b.days};
+    });
   } else {
-    rows = items.map(function(b){ return {'Instrumento':b.t,'Precio':b.precio,'YTM %':b.ytm,'∆ Precio 1D %':b.dod,'Días al vto':b.days}; });
+    rows = items.map(function(b){
+      return {'Instrumento':b.t,'Precio':b.precio,'YTM %':b.ytm,'Δ Precio 1D %':b.dod,'Días al vto':b.days};
+    });
   }
   xlDownload(makeWB([{name:section.toUpperCase(),data:rows}]), section.toUpperCase()+'_'+BONOS_TODAY+'.xlsx');
 }
 
+// Letras — LETRAS sheet (LECAP + TAMAR)
 function downloadXL_Letras(tipo){
-  var items = tipo==='lecap' ? (LETRAS.lecap||[]) : (LETRAS.tamar||[]);
-  var rows = items.map(function(b){ return {'Instrumento':b.t,'Precio':b.price,'TEM %':b.y,'Días al vto':b.d}; });
-  xlDownload(makeWB([{name:tipo.toUpperCase(),data:rows}]), tipo.toUpperCase()+'_'+BONOS_TODAY+'.xlsx');
+  var sheets = [];
+  var lec = LETRAS&&LETRAS.lecap ? LETRAS.lecap : [];
+  var tam = LETRAS&&LETRAS.tamar ? LETRAS.tamar : [];
+  if(tipo==='lecap'||!tipo){
+    if(lec.length) sheets.push({name:'LECAP', data:lec.map(function(b){
+      return {'Instrumento':b.t,'Precio':b.price,'TEM %':b.y,'Días al vto':b.d};
+    })});
+  }
+  if(tipo==='tamar'||!tipo){
+    if(tam.length) sheets.push({name:'TAMAR', data:tam.map(function(b){
+      return {'Instrumento':b.t,'Precio':b.price,'TEM %':b.y,'Días al vto':b.d};
+    })});
+  }
+  if(!sheets.length) return;
+  xlDownload(makeWB(sheets), 'Letras_'+BONOS_TODAY+'.xlsx');
 }
-
-
 
 // ===================== INIT =====================
 setChartHeights();
